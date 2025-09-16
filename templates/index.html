@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Profile Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Fake Profile Detection</h1>
+        <p>Enter the details of the Instagram profile below:</p>
+        
+        <form action="/predict" method="POST">
+            <label>Profile Pic (1 for Yes, 0 for No):</label>
+            <input type="number" name="profile_pic" required><br>
+
+            <label>Nums/Length Username:</label>
+            <input type="number" name="nums_length_username" step="0.01" required><br>
+
+            <label>Fullname Words:</label>
+            <input type="number" name="fullname_words" required><br>
+
+            <label>Nums/Length Fullname:</label>
+            <input type="number" name="nums_length_fullname" step="0.01" required><br>
+
+            <label>Name == Username (1 for Yes, 0 for No):</label>
+            <input type="number" name="name_equals_username" required><br>
+
+            <label>Description Length:</label>
+            <input type="number" name="description_length" required><br>
+
+            <label>External URL (1 for Yes, 0 for No):</label>
+            <input type="number" name="external_url" required><br>
+
+            <label>Private (1 for Yes, 0 for No):</label>
+            <input type="number" name="private" required><br>
+
+            <label># Posts:</label>
+            <input type="number" name="num_posts" required><br>
+
+            <label># Followers:</label>
+            <input type="number" name="num_followers" required><br>
+
+            <label># Follows:</label>
+            <input type="number" name="num_follows" required><br>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                <h2>Prediction:</h2>
+                <p>{{ prediction }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
